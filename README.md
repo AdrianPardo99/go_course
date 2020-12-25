@@ -3,16 +3,17 @@
 Curso de udemy de diciembre 2020 para el desarrollo y conclusión de un proyecto de Isw y de modo de dar un mejor uso de webservices en Go y posiblemente después con otros frameworks de webservices
 
 ## Qué es Go?
-Es un lenguaje de programación opensource de Google, creado en 2009
-
-Este lenguaje es orientado para ser un lenguaje optimo en tiempo de ejecución para enfoques de desarrollo de aplicaciones para internet (Backends)
-
-Este lenguaje contiene un tipado estático (tipado fuerte)
-
-Es un lenguaje compilado para poder ser ejecutado
+* Es un lenguaje de programación opensource de Google, creado en 2009
+* Este lenguaje es orientado para ser un lenguaje optimo en tiempo de ejecución para enfoques de desarrollo de aplicaciones para internet (Backends)
+* Este lenguaje contiene un tipado estático (tipado fuerte)
+* Es un lenguaje compilado para poder ser ejecutado
 
 ## Ventajas
-Sencillo de escritura y de lectura con similitudes a lenguaje C
-
-
-
+* Sencillo de escritura y de lectura con similitudes a lenguaje C
+* Soporta miles de conexiones simultaneas (Caso de web / Backend)
+* Velocidad y rendimiento optimo
+## Para qué siver?
+* Crear un script específico para una funcionalidad específica en OS como un demonio en sistema
+* Backend / API RESTful para peticiones como servidor
+* Sockets para aplicaciones de conexión Cliente-Servidor
+## Instalación
