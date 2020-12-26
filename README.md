@@ -31,7 +31,7 @@ __Caso Linux__
 * Sistemas basados en Debian o que no tengan repositorio con golang
   * Ir a la pagina principal de golang para bajar la versión deseada [Go](https://golang.org/dl/)
   * Con ello ejecutaremos lo siguiente
-``bash
+```bash
   # Ejemplo con la ultima version disponible
   wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
   sudo tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz
