@@ -20,7 +20,9 @@ Curso de udemy de diciembre 2020 para el desarrollo y conclusión de un proyecto
 
 __Caso Windows__
 
-Para este caso es necesario que se haga uso de alguna terminal que tenga compatibilidad o comportamiento como Linux el cual puede ser instalado desde la tienda de Windows y puede instalar paquetes de Linux, los cuales tienen una compatibilidad a sistemas Debian (Ubuntu)
+Para este caso es necesario que se haga uso de alguna terminal que tenga compatibilidad o comportamiento como Linux el cual puede ser instalado desde la tienda de Windows y puede instalar paquetes de Linux, los cuales tienen una compatibilidad a sistemas Debian (Ubuntu) por si es necesario hacer uso de Go a nivel de Windows visitar la página para bajar el compilador y el lenguaje, mientras que en caso contrario pasar a la siguiente parte que es el caso de Linux.
+
+[Go](https://golang.org/dl/)
 
 __Caso Linux__
 
@@ -41,3 +43,7 @@ __Caso Linux__
   # Finalmente escribir
   go version
 ```
+
+Para finalmente si es con uso de Windows el que exista actualmente la terminal de Linux nos permite instalar con las líneas de comando de Debian el lenguaje de Go, pero preferentemente usa Linux...
+
+
