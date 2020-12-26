@@ -46,4 +46,19 @@ __Caso Linux__
 
 Para finalmente si es con uso de Windows el que exista actualmente la terminal de Linux nos permite instalar con las líneas de comando de Debian el lenguaje de Go, pero preferentemente usa Linux...
 
+## Archivos y extensiones de archivo
 
+Para poder trabajar con este lenguaje de programación es necesario tener conocimiento que nuestros archivos los guardaremos con extensiones de archivo .go los cuales nos permitiran trabajar más tarde
+
+## Hola mundo primer código
+
+Para realizar el sencillo y clásico hola mundo podemos escribir lo siguiente
+
+```go
+  package main  /* Paquete principal del lenguaje para el inicio */
+  import "ftm"  /* Primer paquete de salida estandar de datos */
+
+  func main(){
+    ftm.Printl("Hola mundo desde el curso en Github") /* Entre comillas */
+  }
+```
