@@ -17,3 +17,27 @@ Curso de udemy de diciembre 2020 para el desarrollo y conclusión de un proyecto
 * Backend / API RESTful para peticiones como servidor
 * Sockets para aplicaciones de conexión Cliente-Servidor
 ## Instalación
+
+__Caso Windows__
+
+Para este caso es necesario que se haga uso de alguna terminal que tenga compatibilidad o comportamiento como Linux el cual puede ser instalado desde la tienda de Windows y puede instalar paquetes de Linux, los cuales tienen una compatibilidad a sistemas Debian (Ubuntu)
+
+__Caso Linux__
+
+* Sistemas basados en RedHat
+```bash
+  sudo dnf install golang -y
+```
+* Sistemas basados en Debian o que no tengan repositorio con golang
+  * Ir a la pagina principal de golang para bajar la versión deseada [Go](https://golang.org/dl/)
+  * Con ello ejecutaremos lo siguiente
+``bash
+  # Ejemplo con la ultima version disponible
+  wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
+  sudo tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz
+  sudo echo "PATH=$PATH:/usr/local/go/bin" | sudo tee -a /etc/profile
+  sudo source /etc/profile
+
+  # Finalmente escribir
+  go version
+```
