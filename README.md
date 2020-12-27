@@ -95,15 +95,6 @@ Si bien al realizar _go run_ podemos ver que ejecutamos nuestro código fuente, 
   go build <archivo.go>
 ```
 El cual nos generara un archivo binario compatible con nuestra plataforma de desarrollo.
-## Variables
-Al ser un lenguaje de tipado fuerte, es decir, debemos especificar el tipo de dato con el que vamos a trabajar en nuestros programas, existen diversas formas de declarar variables en go, y de distintos tipos entre los tipos más comunes de variables tenemos:
-```go
-  int         /* -> Valores enteros */
-  bool        /* -> Valores booleanos */
-  float32     /* -> Valores reales */
-  byte        /* -> Valores de un byte */
-  string      /* -> Valores de cadena de caracteres */
-```
 ## Tipos de datos
 Tomando en cuenta algunas ideas de distintos sitios tenemos que el tipo de variables puede ser más extendido:
 
@@ -134,3 +125,64 @@ En go al igual que en lenguajes como C, C++, Java que necesitan nombrar el tipo 
 | float64      | Flotante de 64 bits en la especificación IEEE-754 |
 | complex64    | Número complejo con parte real e imaginario de 32 bits respectivamente |
 | complex128   | Número complejo con parte real e imaginario de 64 bits respectivamente |
+## Variables
+Al ser un lenguaje de tipado fuerte, es decir, debemos especificar el tipo de dato con el que vamos a trabajar en nuestros programas, existen diversas formas de declarar variables en go, y de distintos tipos entre los tipos más comunes de variables tenemos:
+```go
+  int         /* -> Valores enteros */
+  bool        /* -> Valores booleanos */
+  float32     /* -> Valores reales */
+  byte        /* -> Valores de un byte */
+  string      /* -> Valores de cadena de caracteres */
+```
+Entonces existen diversos modos de declarar variables, el más común de ellos al iniciar en el lenguaje es el siguiente:
+```go
+  /* Variable de tipo entero */
+  var var_name int
+  /* Variable de tipo flotante */
+  var var_name1 float32
+```
+Y la forma corta en la que luego declaran las variables es
+```go
+  /* Declaración corta de entero */
+  var_name :=0
+  /* Declaración corta de flotante*/
+  var_name1 := 0.0
+```
+## Constantes
+Al igual las variables necesitaremos en algún momento de nuestras aplicaciones el uso de valores constantes, es decir, datos fijos que no cambian a pesar de la ejecución del programa.
+
+Para esto sencillamente escribiremos lo siguiente para declarar nuestras constantes del programa:
+```go
+  /* Forma normal */
+  const nombre string="Nombre de alguien"
+  /* Forma corta */
+  const nombre="Nombre de alguien"
+```
+## Estructuras
+Las estructuras son un tipo de dato los cuales te permiten trabajar con un conjunto de datos los cuales te permiten crear o describir algún tipo de objeto importante, por ejemplo:
+```go
+  type Persona struct{
+    nombre string
+    apellidos string
+    edad uint8
+    sexo bool
+  }
+```
+### Ejemplo de como usar la estructura Persona
+
+```go
+  package main
+  import "fmt"
+  type Persona struct{
+    nombre string
+    apellidos string
+    edad uint8
+    sexo byte
+  }
+  func main(){
+    var persona=Persona{nombre:"Juan",apellidos:"Perez",edad:18,sexo:'M'}
+    persona1:=Persona{nombre:"Adrian",apellidos:"Gonzalez",edad:21,sexo:'M'}
+    fmt.Println(persona)
+    fmt.Println(persona1)
+  }
+```
