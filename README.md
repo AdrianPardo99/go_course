@@ -220,3 +220,36 @@ Ahora bien también podemos encontrar funciones las cuales obtengan una cantidad
     }
   }
 ```
+## Arreglos
+Los arreglos son o forman una colección de datos de un tipo de dato especifico, en los cuales podemos almacenar de manera estática o dinámica colecciones de datos bajo un tamaño predeterminado, por ello la forma más común de declarar arreglos es:
+```go
+  var arr_str [4]string
+  arr_str[0]="Parte 1"
+  arr_str[1]="Parte 2"
+  arr_str[2]="Parte 3"
+  arr_str[3]="Parte 4"
+  /* Imprime todos los elementos */
+  fmt.Println(arr_str)
+
+  /* Forma 2 */
+  peliculas:=[3]string{"Star Wars","Inglourious Basterds","X Men"}
+  fmt.Println(peliculas)
+  /* Para imprimir solo 1 elemento */
+  fmt.Println(peliculas[1])
+```
+También no solo podemos limitarnos a arreglos de 1 sola dimensión sino que también podemos trabajar con arreglos de más de 1 dimensión:
+```go
+  peliculas:=[2][2]string{{"Harry Potter","Animales Fantasticos"},{"El señor de los anillos","Hobbit"}}
+  fmt.Println(peliculas)
+```
+### Slices o arreglos dinámicos
+El hecho de que algunas aplicaciones requieren un uso definido o indefinido de datos para resolver cierta problemática es debido a que algunas aplicaciones o proyectos requieren que el procesamiento de información, por ello la forma de crear un arreglo dinámico es:
+```go
+  series:=[]string{"Dr_House","The_Office"}
+  fmt.Println(series)
+  fmt.Println("Tamaño del arreglo: ",len(series))
+  /* Para añadir un nuevo elemento tendremos */
+  series=append(series,"Dexter")
+  fmt.Println(series)
+  fmt.Println("Tamaño del arreglo: ",len(series))
+```
