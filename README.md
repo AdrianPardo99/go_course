@@ -186,3 +186,37 @@ Las estructuras son un tipo de dato los cuales te permiten trabajar con un conju
     fmt.Println(persona1)
   }
 ```
+## Funciones
+Las funciones son pequeñas bloques de código que pueden ser ejecutados con el fin de ahorrar la escritura de código repetitivo por lo cual en Go es muy sencillo de implementar e incluso puede realizarse un retorno de multiples resultados
+### Función sin retorno
+```go
+  func calculadora(num1,num2){
+    fmt.Printl("Bienvenido a la calculadora de los números:\n\tnum1: ",num1,
+      "\n\tnum2: ",num2)
+  }
+```
+### Función con retorno de 1 y múltiples datos
+```go
+  func calc(num1,num2)(r1,r2,r3,r4){
+    return (num1+num2),(num1-num2),(num1*num2),(num1/num2)
+  }
+```
+### Closure
+Son funciones que al no contener o llevar un nombre especifico estas nos pueden ayudar a realizar diversas tareas dentro de una función, un ejemplo de ella sería
+```go
+  func calc(n)(string,float32){
+    iva:=func(){
+      return n*1.16
+    }
+    return "Precio con iva: ",iva()
+  }
+```
+### Funcion con varios parámetros enumerados
+Ahora bien también podemos encontrar funciones las cuales obtengan una cantidad indefinida de parametros para después trabajar con ellos, ejemplo de ello:
+```go
+  func cuadrado(n...int){
+    for _, m:=range n{
+      fmt.Println(m*m)
+    }
+  }
+```
