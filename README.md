@@ -253,3 +253,63 @@ El hecho de que algunas aplicaciones requieren un uso definido o indefinido de d
   fmt.Println(series)
   fmt.Println("Tamaño del arreglo: ",len(series))
 ```
+### Estructuras condicionales
+Las estructuras condicionales son evaluaciones lógicas las cuales tienen la finalidad de realizar y complementar ciertas decisiones o funciones externas las cuales pueden ir por un camino de ejecución o ir por otro camino de ejecución
+#### If-else
+```go
+  /* Forma 1 */
+  val:=true
+  if val{
+    fmt.Println("El valor es verdadero")
+  }else{
+    fmt.Println("El valor es falso")
+  }
+  /* Forma encadenada */
+  name:="el amor de tu vida"
+  if name=="el amor de tu vida"{
+    fmt.Println("Ulalalala")
+  }else if len(name)>0{
+    fmt.Println("Hola ",name)
+  }else{
+    fmt.Println("Hola extraño")
+  }
+```
+## Parametros por consola
+Ahora bien para algunas cosas importantes en las que no necesitamos que nuestro usuario intervenga en todo a veces es necesario que nuestras aplicaciones reciban argumentos a través de la consola de comandos con el fin de ejecutar nuestra aplicación
+```go
+  package main
+  import ("fmt"
+          "os"
+          "strconv")
+  func main(){
+    if len(os.Args)<3{
+      fmt.Println("Error\nUsage "+os.Args[0]+" <name> <age>")
+      os.Exit(1)
+    }
+    fmt.Println("Hello "+os.Args[1])
+    age,err:=strconv.Atoi(os.Args[2])
+    if err==nil{
+      if age>=18{
+        fmt.Println("Welcome")
+      }else{
+        fmt.Println("Get out")
+      }
+    }else{
+      fmt.Println("Error conversion")
+      os.Exit(2)
+    }
+  }
+```
+## Ciclos
+Los ciclos son bloques de instrucciones que serán repetidas una N cantidad de veces, por lo que en muchas ocasiones estas funcionan para el calculo y o realizar operaciones sucesivamente una cantidad predeterminada, ejemplo:
+```go
+  arr_fib:=[]int{0,1}
+  val:=10
+  p:=1
+  /* Ciclo repetitivo hasta 10 veces */
+  for i:=0;i<val;i++{
+    arr_fib=append(arr_fib,(arr_fib[p+i]+arr_fib[p-1+i]))
+
+  }
+  fmt.Println("Serie fibonacci ",arr_fib)
+```
