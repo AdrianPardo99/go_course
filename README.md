@@ -274,6 +274,29 @@ Las estructuras condicionales son evaluaciones lógicas las cuales tienen la fin
     fmt.Println("Hola extraño")
   }
 ```
+#### Switch
+```go
+  package main
+  import ("fmt"
+          "time")
+  func main(){
+    enum_dia:=time.Now()
+    hoy:=enum_dia.Weekday()
+    switch hoy {
+    case 0:
+      fmt.Println("Domingo")
+    break
+    case 1:
+      fmt.Println("Lunes")
+    break
+    case 2:
+      fmt.Println("Martes")
+    break
+    default:
+      fmt.Println("Otro día")
+    }
+  }
+```
 ## Parametros por consola
 Ahora bien para algunas cosas importantes en las que no necesitamos que nuestro usuario intervenga en todo a veces es necesario que nuestras aplicaciones reciban argumentos a través de la consola de comandos con el fin de ejecutar nuestra aplicación
 ```go
@@ -302,6 +325,7 @@ Ahora bien para algunas cosas importantes en las que no necesitamos que nuestro 
 ```
 ## Ciclos
 Los ciclos son bloques de instrucciones que serán repetidas una N cantidad de veces, por lo que en muchas ocasiones estas funcionan para el calculo y o realizar operaciones sucesivamente una cantidad predeterminada, ejemplo:
+#### For
 ```go
   arr_fib:=[]int{0,1}
   val:=10
@@ -312,4 +336,7 @@ Los ciclos son bloques de instrucciones que serán repetidas una N cantidad de v
 
   }
   fmt.Println("Serie fibonacci ",arr_fib)
+```
+#### While?
+```go
 ```
