@@ -327,16 +327,25 @@ Ahora bien para algunas cosas importantes en las que no necesitamos que nuestro 
 Los ciclos son bloques de instrucciones que serán repetidas una N cantidad de veces, por lo que en muchas ocasiones estas funcionan para el calculo y o realizar operaciones sucesivamente una cantidad predeterminada, ejemplo:
 #### For
 ```go
-  arr_fib:=[]int{0,1}
+  arr_fib:=[]int64{0,1}
   val:=10
   p:=1
   /* Ciclo repetitivo hasta 10 veces */
   for i:=0;i<val;i++{
     arr_fib=append(arr_fib,(arr_fib[p+i]+arr_fib[p-1+i]))
-
   }
   fmt.Println("Serie fibonacci ",arr_fib)
 ```
 #### While?
 ```go
+  /* Lo más cercano a while es */
+  arr_fib:=[]int64{0,1}
+  val:=10
+  i:=0
+  p:=1
+  for i<val{
+    arr_fib=append(arr_fib,(arr_fib[p+i]+arr_fib[p-1+i]))
+    i++
+  }
+  fmt.Println("Serie fibonacci ",arr_fib)
 ```
