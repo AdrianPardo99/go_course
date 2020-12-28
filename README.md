@@ -239,7 +239,8 @@ Los arreglos son o forman una colección de datos de un tipo de dato especifico,
 ```
 También no solo podemos limitarnos a arreglos de 1 sola dimensión sino que también podemos trabajar con arreglos de más de 1 dimensión:
 ```go
-  peliculas:=[2][2]string{{"Harry Potter","Animales Fantasticos"},{"El señor de los anillos","Hobbit"}}
+  peliculas:=[2][2]string{{"Harry Potter","Animales Fantasticos"},
+    {"El señor de los anillos","Hobbit"}}
   fmt.Println(peliculas)
 ```
 ### Slices o arreglos dinámicos
