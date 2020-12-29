@@ -350,3 +350,20 @@ Los ciclos son bloques de instrucciones que serán repetidas una N cantidad de v
   }
   fmt.Println("Serie fibonacci ",arr_fib)
 ```
+## Flujo de datos
+El flujo de datos es teóricamente el lugar de donde pueden ser obtenidos y el lugar donde se pueden mostrar algunos datos, generalmente en muchas aplicaciones se toma en cuenta el uso de esto para mostrar en pantalla algunas cosas o en su defecto se realiza una tarea tan nueva o exhaustiva de almacenar o leer los datos desde un archivo o desde la consola del usuario, por ello los formatos comunes para la función parecida a lenguaje __C__ _scanf_, sigue la siguiente tabla de formatos
+| Formato | Lectura |
+| ------- | ------- |
+| \%d | Lee un entero normal de 32 bits con signo |
+| \%f | Lee un flotante de 32 bits |
+| \%s | Lee una cadena de caracteres o string |
+
+Donde este tipo de datos son muy comunes de utilizar, más adelante se puede complementar esta tabla con otros datos que se desean trabajar.
+### Scanf
+Función de lectura estándar para que el usuario asigne los datos que desea trabajar durante la ejecución de un programa, ejemplo:
+```go
+  fmt.Println("Ingresa un valor entero")
+  var entero int
+  fmt.Scanf("%d",&entero)
+  fmt.Println("El valor entero ingresado es: ",entero)
+```
