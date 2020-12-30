@@ -1,0 +1,4 @@
+Hola
+mundo
+desde
+archivo de texto
