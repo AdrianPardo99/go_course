@@ -420,3 +420,104 @@ Función de lectura estándar para que el usuario asigne los datos que desea tra
     }
   }
 ```
+## Uso de BD no relacional
+Las BD no relacionales son de suma utilidad cuando las estructuras a almacenar no tienen un modelo de datos necesariamente completo o este puede variar, y en ocasiones nuestra información por sencillez la almacenábamos como formatos JSON, por ello un servidor de BD no relacionales que usaremos sera MongoDB el cual utilizaremos con nuestro lenguaje de programación para interactuar directamente y así podremos realizar pequeñas aplicaciones que más tarde pueden escalar a sistemas RESTful web.
+
+Para ello instalaremos el modulo de go oficial que es compatible con MongoDB
+```bash
+  go get go.mongodb.org/mongo-driver
+  # Si sol se desea hacer en un solo usuario la instalacion
+  go get -u go.mongodb.org/mongo-driver
+```
+
+Con ello podremos conectarnos a nuestro servidor de BD no relacional, después con ello podremos crear el flujo de conexión al servicio y hacer distintas cosas
+
+### Conexión inicial
+```go
+  package main
+
+  import (
+    "context"
+    "fmt"
+    "log"
+    "go.mongodb.org/mongo-driver/mongo"
+    "go.mongodb.org/mongo-driver/mongo/options"
+  )
+  func main() {
+  	host := "localhost"
+  	port := 27017
+  	credential := options.Credential{
+      Username: "username_here",
+      Password: "pwd_here",
+  	}
+  	clientOpts := options.Client().
+  		ApplyURI(fmt.Sprintf("mongodb://%s:%d", host, port)).
+  		SetAuth(credential)
+  	client, err := mongo.Connect(context.TODO(), clientOpts)
+  	if err != nil {
+  		log.Fatal(err)
+  	}
+  	err = client.Ping(context.TODO(), nil)
+    if err != nil {
+  		log.Fatal(err)
+  	}
+    err = client.Disconnect(context.TODO())
+  	if err != nil {
+  		log.Fatal(err)
+  	}
+    fmt.Println("Closed connection")
+    fmt.Println("Congratulations, you're already connected to MongoDB!")
+  }
+```
+### Insersión de datos en para MongoDB
+Ahora bien ya vimos la parte elemental que es conectarnos al servidor pero que sucede cuando queremos o deseamos insertar datos es necesario tener un pequeño modelo de como leeremos y el como insertaremos los datos en nuestro servidor con ello procederemos a definir primero el modelo con una estructura:
+```go
+  /* Definición de nuestro modelo */
+  type Movie struct{
+    Name string     `json:"name"`
+    Year int        `json:"year"`
+    Director string `json:"director"`
+    /* Las comillas simples funcionan para darle un
+        estandar a como se leen los datos en json
+    */
+  }
+```
+Entonces que pasa si deseamos insertar un solo dato en nuestra BD:
+```go
+  collection:=client.Database("name_of_db").Collection("collections")
+  /* Se instancia una pelicula nueva a almacenar en la BD */
+  pelicula:=Movie{"data_1",2,"data_2"}
+  /* Se instancia para guardar 1 dato */
+  insertResult,err:=collection.InsertOne(context.TODO(), pelicula)
+  if err != nil {
+	   log.Fatal(err)
+  }
+  /* A partir de aqui ya se inserta el primer dato con la siguiente
+      estructura
+
+    {"name":"data_1","year":2,"director":"data_2"}
+  */
+```
+Ahora que pasa si deseamos insertar más datos:
+```go
+  /* Forma 1 */
+  collection:=client.Database("name_of_db").Collection("collections")
+  peliculas:=[]interfaces{}{obj1,obj2,obj3}
+  insert_result,err:=collection.InsertMany(context.TODO(),peliculas)
+	if err != nil {
+		log.Fatal(err)
+	}
+  /* Aqui ya se insertaron los multiples datos pero que pasa
+      si ya hay un arreglo existente
+    Forma 2
+  */
+  collection:=client.Database("name_of_db").Collection("collections")
+  peliculas:=[]interfaces{}{}
+  for i:=0;i<len(array_movies);i++{
+    peliculas=append(peliculas,array_movies[i])
+  }
+  insert_result,err:=collection.InsertMany(context.TODO(),peliculas)
+	if err != nil {
+		log.Fatal(err)
+	}
+```
