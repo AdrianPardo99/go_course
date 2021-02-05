@@ -426,7 +426,7 @@ Las BD no relacionales son de suma utilidad cuando las estructuras a almacenar n
 Para ello instalaremos el modulo de go oficial que es compatible con MongoDB
 ```bash
   go get go.mongodb.org/mongo-driver
-  # Si sol se desea hacer en un solo usuario la instalacion
+  # Si solo se desea hacer en un solo usuario la instalacion
   go get -u go.mongodb.org/mongo-driver
 ```
 
@@ -469,7 +469,7 @@ Con ello podremos conectarnos a nuestro servidor de BD no relacional, después c
     fmt.Println("Congratulations, you're already connected to MongoDB!")
   }
 ```
-### Insersión de datos en para MongoDB
+### Inserción de datos en para MongoDB
 Ahora bien ya vimos la parte elemental que es conectarnos al servidor pero que sucede cuando queremos o deseamos insertar datos es necesario tener un pequeño modelo de como leeremos y el como insertaremos los datos en nuestro servidor con ello procederemos a definir primero el modelo con una estructura:
 ```go
   /* Definición de nuestro modelo */
@@ -520,4 +520,29 @@ Ahora que pasa si deseamos insertar más datos:
 	if err != nil {
 		log.Fatal(err)
 	}
+```
+### Update de uno o más parametros de la BD
+Generalmente cometeremos errores al momento de realizar una inserción de datos y en ocasiones necesitaremos modificarlos de modo en que nuestro registro en la BD sea correcto, por ello nos apoyaremos de una estructura y de una función de la API de Golang para MongoDB, la cual es BSON, BSON (Binary JSON), el cual nos permite crear una sub-estructura la cual nos ayudara a encontrar nuestro registro erróneo y corregirlo posteriormente.
+
+Para esto en nuestros imports llamaremos al paquete bson, de la siguiente forma:
+```go
+  import(
+    /* Todos los paquetes anteriores aquí */
+    "go.mongodb.org/mongo-driver/bson"
+  )
+```
+Una vez teniendo esto usaremos la función que viene del paquete BSON _.D_ la cual nos convierte nuestros datos a una estructura Binary JSON la cual trabajara sin ningún problema nuestro servidor.
+```go
+  /* Crearemos primero el filtro del campo a localizar: */
+  filtro:=bson.D{{"campo_json","Valor_del_campo"}}
+  updateResult, err := collectionUpdateOne(context.TODO(), filtro, bson.D{
+    {"$set", bson.D{
+      {"campo_json", "Nuevo_valor_del_campo"},
+    }},
+  })
+  if err != nil {
+    log.Fatal(err)
+  }
+  fmt.Printf("Matched %v documents and updated %v documents.\n",
+    updateResult.MatchedCount, updateResult.ModifiedCount)
 ```
