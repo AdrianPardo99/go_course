@@ -23,8 +23,8 @@ func main() {
 	host := "localhost"
 	port := 27017
 	credential := options.Credential{
-    Username: "d3vcr4ck",
-    Password: "adrianPardo_99",
+    Username: "username",
+    Password: "password",
 	}
 	clientOpts := options.Client().
 		ApplyURI(fmt.Sprintf("mongodb://%s:%d", host, port)).

@@ -7,7 +7,7 @@ import (
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	//"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 /* Modelo */
@@ -39,21 +39,21 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+  collection:=client.Database("curso_go").Collection("movies")
 
-	/* Vereficamos al driver hacia donde haremos la alta... */
-	collection:=client.Database("curso_go").Collection("movies")
+  /* Aquí realizaremos la consulta de peliculas */
+  filtro:=bson.D{{"name","John Wick 2"}}
+  updateResult, err := collection.UpdateOne(context.TODO(), filtro, bson.D{
+    {"$set", bson.D{
+      {"name", "John Wick Chapter 2"},
+      }},
+  })
+  if err != nil {
+    log.Fatal(err)
+  }
+  fmt.Printf("Matched %v documents and updated %v documents.\n",
+    updateResult.MatchedCount, updateResult.ModifiedCount)
 
-	/* Insercion de datos de ejemplo */
-	m1:=Movie{"La insoportable levedad del ser",1988,"Philip Kaufman"}
-	m2:=Movie{"John Wick",2014,"Chad Stahelski"}
-	m3:=Movie{"John Wick 2",2017,"Chad Stahelski"}
-	m4:=Movie{"John Wick Parabellum",2019,"Chad Stahelski"}
-	movies:=[]interface{}{m1,m2,m3,m4}
-	insert_result,err:=collection.InsertMany(context.TODO(),movies)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Movies had been inserted: ", insert_result.InsertedIDs)
 	err = client.Disconnect(context.TODO())
 	if err != nil {
 		log.Fatal(err)
