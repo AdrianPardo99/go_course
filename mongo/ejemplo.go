@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
-
+	"os"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	//"go.mongodb.org/mongo-driver/bson"
@@ -20,11 +20,15 @@ type Movie struct{
 type Movies []Movie
 
 func main() {
+	if len(os.Args)<3{
+		fmt.Println("Error\n\tUsage: "+os.Args[0]+" <username> <password>")
+		os.Exit(1)
+	}
 	host := "localhost"
 	port := 27017
 	credential := options.Credential{
-    Username: "username",
-    Password: "password",
+    Username: os.Args[1],
+    Password: os.Args[2],
 	}
 	clientOpts := options.Client().
 		ApplyURI(fmt.Sprintf("mongodb://%s:%d", host, port)).
